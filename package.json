@@ -1,0 +1,23 @@
+{
+  "name": "treei",
+  "version": "1.0.0",
+  "description": "a directory structure tree generator",
+  "repository": {
+    "url": "https://github.com/w2xi/treei"
+  },
+  "homepage": "https://github.com/w2xi/treei#readme",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "treei": "src/index.js"
+  },
+  "keywords": [
+    "directory",
+    "tree",
+    "tree structure"
+  ],
+  "author": "w2xi",
+  "license": "MIT"
+}
