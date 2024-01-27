@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const fs = require('fs')
+
 const map = {
   directory: '📁',
   file: '📄',
@@ -40,23 +41,26 @@ let output = ''
 
 function generateTreeStructure(data, deep = 0) {
   data.forEach((item, index) => {
+    const borderPrefix = (characters.border + ' '.repeat(3)).repeat(deep)
     let contentPrefix = index === data.length - 1 ? characters.last : characters.contain 
     contentPrefix += characters.line.repeat(2)
-    const borderPrefix = (characters.border + ' '.repeat(2)).repeat(deep)
-    const str = borderPrefix + contentPrefix + ' ' + item.name + '\n'
+    const content = `${map[item.type]} ${item.name}`
+    let currentLineStr = `${borderPrefix}${contentPrefix}${content}`
+
+    currentLineStr += '\n'
     
     if (item.children) {
       // 目录
-      output += str
+      output += currentLineStr
       generateTreeStructure(item.children, deep + 1)
     } else {
       // 文件
-      output += str
+      output += currentLineStr
     }
   })
 }
 
 generateTreeStructure(result.children)
 
-console.log(result.name);
-console.log(output);
+console.log(result.name)
+console.log(output)
