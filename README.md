@@ -1,5 +1,7 @@
 # treei
 
+[![npm](https://img.shields.io/badge/npm-1.1.0-blue)](https://www.npmjs.com/package/treei)
+
 `treei` is a node command line tool to generate directory structure tree
 
 ## Installation
