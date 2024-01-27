@@ -1,6 +1,6 @@
 {
   "name": "treei",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "a directory structure tree generator",
   "repository": {
     "url": "https://github.com/w2xi/treei"
@@ -19,5 +19,8 @@
     "tree structure"
   ],
   "author": "w2xi",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^11.1.0"
+  }
 }
