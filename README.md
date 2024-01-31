@@ -20,18 +20,20 @@ Generate a directory structure tree
 
 Options:
   -V, --version          output the version number
-  -i, --ignore <ig>      ignore specific directory name
+  -i, --ignore <ig>      ignore specific directory name, separated by comma or '|'
   -d, --depth <depth>    specify the depth of output
   -f, --only-folder      output folder only
   --icon                 output emoji icon, prefixing filename or directory
-  -o, --output <output>  export content into a file
+  -o, --output <output>  export content into a file, appending mode by default
   -h, --help             display help for command
 ```
 
 ## Examples
 
+Ignore `.git` and `node_modules` directory
+
 ```bash
-$ treei -i '.git,node_modules'
+$ treei -i '.git,node_modules' # or treei -i'git|node_modules'
 treei
 ├──.gitignore
 ├──package-lock.json
@@ -40,6 +42,8 @@ treei
 └──src
 |   └──index.js
 ```
+
+Show emoji icon, prefixing filename or directory
 
 ```bash
 $ treei -i '.git,node_modules' --icon
@@ -52,6 +56,8 @@ treei
 |   └──📄index.js
 ```
 
+Export output into result.md, and append mode by default.
+
 ```bash
 $ treei -i '.git,node_modules' -o result.md
 treei
@@ -61,6 +67,4 @@ treei
 ├──README.md
 └──src
 |   └──index.js
-
-# The output has been saved into ./result.md
 ```

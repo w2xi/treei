@@ -19,11 +19,11 @@ program
   .name('treei')
   .version(package.version)
   .description('Generate a directory structure tree')
-  .option('-i, --ignore <ig>', 'ignore specific directory name')
+  .option('-i, --ignore <ig>', 'ignore specific directory name, separated by comma or \'|\'')
   .option('-d, --depth <depth>', 'specify the depth of output')
   .option('-f, --only-folder', 'output folder only')
   .option('--icon', 'output emoji icon, prefixing filename or directory')
-  .option('-o, --output <output>', 'export content into a file')
+  .option('-o, --output <output>', 'export content into a file, appending mode by default')
   .parse(process.argv)
 
 const options = program.opts()
