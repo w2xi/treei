@@ -20,7 +20,8 @@ program
   .version(package.version)
   .description('Generate a directory structure tree')
   .option('-i, --ignore <ig>', 'ignore specific directory name, separated by comma or \'|\'')
-  .option('-d, --depth <depth>', 'specify the depth of output')
+  .option('-l, --level <level>', 'specify the level of output')
+  .option('-d, --directory <dir>', 'specify the directory to generate structure tree', process.cwd())
   .option('-f, --only-folder', 'output folder only')
   .option('--icon', 'output emoji icon, prefixing filename or directory')
   .option('-o, --output <output>', 'export content into a file, appending mode by default')
@@ -67,15 +68,15 @@ function toTree(path, deep = 0) {
   }
 }
 
-const root = toTree(process.cwd())
+const root = toTree(options.directory)
 
-let depth
-if (options.depth && !Number.isNaN(parseInt(options.depth))) {
-  depth = parseInt(options.depth)
+let level
+if (options.level && !Number.isNaN(parseInt(options.level))) {
+  level = parseInt(options.level)
 }
 
 function isReachedDepth(deep) {
-  return typeof depth === 'number' && deep >= depth
+  return typeof level === 'number' && deep >= level
 }
 
 let output = ''
