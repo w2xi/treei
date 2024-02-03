@@ -2,6 +2,7 @@
 
 const fs = require('fs')
 const { program } = require('commander')
+const { fileExistSync, isDirectory } = require('./utils')
 const package = require('../package.json')
 
 const map = {
@@ -38,19 +39,14 @@ if (options.ignore) {
 // https://stackoverflow.com/questions/32478698/what-is-the-different-between-stat-fstat-and-lstat-functions-in-node-js
 
 function toTree(path, deep = 0) {
-  const stats = fs.lstatSync(path)
-  
-  if (stats.isDirectory()) {
+  if (isDirectory(path)) {
     let dir = fs.readdirSync(path)
 
     if (ignoreList.length) {
       dir = dir.filter(child => !ignoreList.includes(child))
     }
     if (options.onlyFolder) {
-      dir = dir.filter(child => {
-        const childStats = fs.lstatSync(`${path}/${child}`)
-        return childStats.isDirectory()
-      })
+      dir = dir.filter(child => isDirectory(`${path}/${child}`))
     }
     const children = dir.map(child => toTree(`${path}/${child}`, deep + 1))
     const dirName = path.split('/').pop()
@@ -93,12 +89,10 @@ function generateTreeStructure(data, deep = 0) {
 
     currentLineStr += '\n'
     
-    if (item.children) {
-      // 目录
+    if (item.children) { // directory
       output += currentLineStr
       generateTreeStructure(item.children, deep + 1)
-    } else {
-      // 文件
+    } else { // file
       output += currentLineStr
     }
   })
@@ -108,22 +102,12 @@ generateTreeStructure(root.children)
 
 if (options.output) {
   let outputString = output
-  if (fileExistSync(options.output)) { // 追加处理
+  if (fileExistSync(options.output)) { // appending mode
     outputString = '\n' + output
   }
   fs.appendFile(options.output, outputString, (err) => {
     if (err) throw err
   })
-}
-
-// 检测文件或文件夹是否存在
-function fileExistSync(path) {
-  try {
-    fs.accessSync(path, fs.constants.F_OK)
-  } catch(e) {
-    return false
-  }
-  return true
 }
 
 console.log(root.name)
