@@ -15,7 +15,12 @@ function isDirectory(path) {
   return stats.isDirectory()
 }
 
+function isNumber(value) {
+  return typeof value === 'number'
+}
+
 module.exports = {
   fileExistSync,
   isDirectory,
+  isNumber,
 }
