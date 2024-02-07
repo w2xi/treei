@@ -8,7 +8,9 @@
   "homepage": "https://github.com/w2xi/treei#readme",
   "main": "index.js",
   "scripts": {
-    "release": "release-it"
+    "release": "release-it",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix"
   },
   "bin": {
     "treei": "src/index.js"
@@ -25,6 +27,8 @@
   },
   "devDependencies": {
     "@release-it/conventional-changelog": "^8.0.1",
+    "eslint": "^8.56.0",
+    "prettier": "3.2.5",
     "release-it": "^17.0.3"
   }
 }
