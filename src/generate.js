@@ -1,10 +1,6 @@
 const { emoji, characters } = require('./config')
-const { isNumber } = require('./utils')
 
 function generate(data, options = {}, deep = 0) {
-  if (isNumber(options.level) && deep >= options.level) {
-    return ''
-  }
   let output = ''
 
   data.forEach((item, index) => {
