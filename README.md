@@ -21,7 +21,7 @@ Generate a directory structure tree
 Options:
   -V, --version          output the version number
   -i, --ignore <ig>      ignore specific directory name, separated by comma or '|'  
-  -l, --level <level>    specify the level of output
+  -l, --layer <layer>    specify the layer of output
   -d, --directory <dir>  specify the directory to generate structure tree
   -f, --only-folder      output folder only
   --icon                 output emoji icon, prefixing filename or directory
