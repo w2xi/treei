@@ -34,7 +34,7 @@ Options:
 Ignore `.git` and `node_modules` directory
 
 ```bash
-$ treei -i '.git,node_modules' # or treei -i'git|node_modules'
+$ treei -i '.git|node_modules' # or treei -i '.git|node_modules'
 treei
 ├──.gitignore
 ├──package-lock.json
