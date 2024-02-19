@@ -1,5 +1,12 @@
 
 
+## [1.2.4](https://github.com/w2xi/treei/compare/1.2.3...1.2.4) (2024-02-19)
+
+
+### Bug Fixes
+
+* fix typo ([8ec0b83](https://github.com/w2xi/treei/commit/8ec0b83846660616d513b84dc327f481e21e6fbe))
+
 ## [1.2.3](https://github.com/w2xi/treei/compare/1.2.2...1.2.3) (2024-02-12)
 
 
