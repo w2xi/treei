@@ -34,7 +34,7 @@ Options:
 Ignore `.git` and `node_modules` directory
 
 ```bash
-$ treei -i '.git|node_modules' # or treei -i '.git|node_modules'
+$ treei -i '.git,node_modules' # or treei -i '.git|node_modules'
 treei
 ├──.gitignore
 ├──package-lock.json
@@ -57,7 +57,7 @@ treei
 |   └──📄index.js
 ```
 
-Export output into result.md, and append mode by default.
+Export output into `result.md`, and append mode by default.
 
 ```bash
 $ treei -i '.git,node_modules' -o result.md
