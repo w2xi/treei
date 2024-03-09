@@ -77,7 +77,7 @@ treei
     └──📄utils.js
 ```
 
-Export output into result.md, and append mode by default.
+Export output into `result.md`, and append mode by default.
 
 ```bash
 $ treei -i '.git,node_modules' -o result.md
