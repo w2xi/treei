@@ -1,5 +1,12 @@
 
 
+## [1.2.5](https://github.com/w2xi/treei/compare/1.2.4...1.2.5) (2024-03-09)
+
+
+### Bug Fixes
+
+* eliminate the border symbol '|' recursively for last directory ([9113ea5](https://github.com/w2xi/treei/commit/9113ea515e9e6c89e257b2bfc4402862aced142c))
+
 ## [1.2.4](https://github.com/w2xi/treei/compare/1.2.3...1.2.4) (2024-02-19)
 
 
