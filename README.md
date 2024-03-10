@@ -99,3 +99,6 @@ treei
     ├──📄toTree.js
     └──📄utils.js
 ```
+## License
+
+[MIT](./LICENSE)
