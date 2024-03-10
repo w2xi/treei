@@ -1,5 +1,9 @@
 
 
+## [1.2.6](https://github.com/w2xi/treei/compare/1.2.5...1.2.6) (2024-03-10)
+
+- rewrite code with typescript and add unit tests with vitest ([e59d569](https://github.com/w2xi/treei/commit/e59d56911fc2c57c880df736fc4bf52ee54d3502))
+
 ## [1.2.5](https://github.com/w2xi/treei/compare/1.2.4...1.2.5) (2024-03-09)
 
 
