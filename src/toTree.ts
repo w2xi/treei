@@ -1,13 +1,15 @@
-const fs = require('fs')
-const { isDirectory } = require('./utils')
+import fs from 'fs'
+import { isDirectory } from './utils'
+import { Options, TreeNode } from './type'
+import { NodeTypes } from './config'
 
 // The difference between statSync and lstatSync
 // https://stackoverflow.com/questions/32478698/what-is-the-different-between-stat-fstat-and-lstat-functions-in-node-js
 
 // strategy: dfs or bfs, but bfs by default
-function toTree(options = {}) {
+export function toTree(options: Options) {
   const { strategy, directory } = options
-  
+
   if (strategy === 'bfs') {
     return bfs(directory, options)
   } else {
@@ -15,48 +17,48 @@ function toTree(options = {}) {
   }
 }
 
-function dfs(path, options = {}) {
+function dfs(path: string, options: Options): TreeNode {
+  const dirName = path.split('/').pop()
   if (isDirectory(path)) {
     let dir = fs.readdirSync(path)
     const ignore = options.ignore || []
 
     if (ignore.length) {
-      dir = dir.filter(child => !ignore.includes(child))
+      dir = dir.filter((child) => !ignore.includes(child))
     }
     if (options.onlyFolder) {
-      dir = dir.filter(child => isDirectory(`${path}/${child}`))
+      dir = dir.filter((child) => isDirectory(`${path}/${child}`))
     }
-    const children = dir.map(child => dfs(`${path}/${child}`, options))
-    const dirName = path.split('/').pop()
+    const children = dir.map((child) => dfs(`${path}/${child}`, options))
 
     return {
-      type: 'directory',
-      name: dirName,
-      children,
+      type: NodeTypes.DIRECTORY,
+      name: dirName!,
+      children
     }
   } else {
     return {
-      type: 'file',
-      name: path.split('/').pop(),
+      type: NodeTypes.FILE,
+      name: dirName!
     }
   }
 }
 
-function bfs(path, options = {}) {
+function bfs(path: string, options: Options) {
   let deep = 0
   const { ignore, onlyFolder, layer } = options
   const root = {
     path,
     name: path,
-    type: 'root',
-    children: [],
-  }
+    type: NodeTypes.ROOT,
+    children: []
+  } as TreeNode
   const queue = [root]
 
   while (queue.length) {
     const node = queue.shift()
-    const { path, children } = node
-    const dir = fs.readdirSync(path)
+    const { path, children } = node!
+    const dir = fs.readdirSync(path!)
 
     if (layer && deep >= layer) break
 
@@ -72,17 +74,15 @@ function bfs(path, options = {}) {
       const childItem = {
         path: childPath,
         name: item,
-        type: isDir ? 'directory' : 'file',
-      }
+        type: isDir ? NodeTypes.DIRECTORY : NodeTypes.FILE
+      } as TreeNode
       if (isDir) {
         queue.push(childItem)
         childItem.children = []
       }
-      children.push(childItem)
+      children && children.push(childItem)
     }
   }
 
   return root
 }
-
-module.exports = toTree

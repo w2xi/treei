@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "CommonJS",
+    "strict": true,
+    "declaration": true,
+    "noUnusedLocals": true,
+    "esModuleInterop": true,
+    "outDir": "dist",
+    "lib": ["ESNext"],
+    "types": ["node"],
+    "sourceMap": false,
+    "noEmitOnError": true,
+    "resolveJsonModule": true
+  },
+  "include": ["src/*.ts"],
+  "exclude": ["node_modules", "dist"]
+}
