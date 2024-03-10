@@ -1,19 +1,22 @@
 {
   "name": "treei",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "a directory structure tree generator",
   "repository": {
     "url": "https://github.com/w2xi/treei"
   },
   "homepage": "https://github.com/w2xi/treei#readme",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "dev": "tsup src/index.ts --watch",
+    "build": "tsup src/index.ts --minify",
     "release": "release-it",
-    "lint": "eslint src",
-    "lint:fix": "eslint src --fix"
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src --fix",
+    "test": "vitest"
   },
   "bin": {
-    "treei": "src/index.js"
+    "treei": "dist/index.js"
   },
   "keywords": [
     "directory",
@@ -22,13 +25,19 @@
   ],
   "author": "w2xi",
   "license": "MIT",
-  "dependencies": {
-    "commander": "^11.1.0"
-  },
   "devDependencies": {
     "@release-it/conventional-changelog": "^8.0.1",
+    "@types/node": "^20.11.25",
+    "@typescript-eslint/eslint-plugin": "^7.1.1",
+    "@typescript-eslint/parser": "^7.1.1",
     "eslint": "^8.56.0",
     "prettier": "3.2.5",
-    "release-it": "^17.0.3"
+    "release-it": "^17.0.3",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.2",
+    "vitest": "^1.3.1"
+  },
+  "dependencies": {
+    "commander": "^12.0.0"
   }
 }
