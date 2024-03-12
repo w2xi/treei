@@ -2,6 +2,7 @@ import { describe, test, expect } from 'vitest'
 import { toTree } from '../src/toTree'
 import { Options } from '../src/type'
 import { NodeTypes } from '../src/config'
+import { getMaxLayer } from '../src/utils'
 
 describe('toTree', () => {
   const options = {
@@ -24,16 +25,16 @@ describe('toTree', () => {
 
   test('1 layer', () => {
     const result = toTree({ ...options, layer: 1 })
-    const layer = 1
-    let wantedLayer = 1
-    for (let i = 0; i < result.children!.length; i++) {
-      if (result.children![i].children) {
-        wantedLayer = 2
-      } else {
-        break
-      }
-    }
-    expect(wantedLayer).toBe(layer)
+    const wantedLayer = 1
+    const layer = getMaxLayer(result)
+    expect(layer).toBe(wantedLayer)
+  })
+
+  test('2 layer', () => {
+    const result = toTree({ ...options, layer: 2 })
+    const wantedLayer = 2
+    const layer = getMaxLayer(result)
+    expect(layer).toBe(wantedLayer)
   })
 
   test('only folder', () => {
