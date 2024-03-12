@@ -45,7 +45,6 @@ function dfs(path: string, options: Options): TreeNode {
 }
 
 function bfs(path: string, options: Options) {
-  let deep = 0
   const { ignore, onlyFolder, layer } = options
   const root = {
     path,
@@ -55,32 +54,37 @@ function bfs(path: string, options: Options) {
   } as TreeNode
   const queue = [root]
 
+  let deep = 0
+
   while (queue.length) {
-    const node = queue.shift()
-    const { path, children } = node!
-    const dir = fs.readdirSync(path!)
-
     if (layer && deep >= layer) break
-
     deep++
 
-    for (let i = 0; i < dir.length; i++) {
-      const item = dir[i]
-      if (ignore && ignore.includes(item)) continue
-      const childPath = `${path}/${item}`
-      const isDir = isDirectory(childPath)
-      if (onlyFolder && !isDir) continue
+    let size = queue.length
 
-      const childItem = {
-        path: childPath,
-        name: item,
-        type: isDir ? NodeTypes.DIRECTORY : NodeTypes.FILE
-      } as TreeNode
-      if (isDir) {
-        queue.push(childItem)
-        childItem.children = []
+    while (size--) {
+      const node = queue.shift()
+      const { path, children } = node!
+      const dir = fs.readdirSync(path!)
+
+      for (let i = 0; i < dir.length; i++) {
+        const item = dir[i]
+        if (ignore && ignore.includes(item)) continue
+        const childPath = `${path}/${item}`
+        const isDir = isDirectory(childPath)
+        if (onlyFolder && !isDir) continue
+
+        const childItem = {
+          path: childPath,
+          name: item,
+          type: isDir ? NodeTypes.DIRECTORY : NodeTypes.FILE
+        } as TreeNode
+        if (isDir) {
+          queue.push(childItem)
+          childItem.children = []
+        }
+        children && children.push(childItem)
       }
-      children && children.push(childItem)
     }
   }
 
