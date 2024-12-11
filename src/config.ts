@@ -1,22 +1,22 @@
 export const emoji = {
   directory: '📁',
-  file: '📄'
+  file: '📄',
 }
 
 export const characters = {
   border: '|',
   contain: '├',
   line: '─',
-  last: '└'
+  last: '└',
 }
 
 export const defaultOptions = {
   // strategy of finding tree structure, bfs by default
-  strategy: 'bfs'
+  strategy: 'bfs',
 }
 
 export const NodeTypes = {
   ROOT: 'root',
   DIRECTORY: 'directory',
-  FILE: 'file'
-}
+  FILE: 'file',
+} as const

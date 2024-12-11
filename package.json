@@ -10,11 +10,12 @@
   "scripts": {
     "prepublishOnly": "nr build",
     "dev": "tsup src/index.ts --watch",
-    "build": "tsup src/index.ts --minify",
+    "build": "nr type && tsup src/index.ts --minify",
     "release": "bumpp --commit --push --tag && pnpm publish",
     "lint": "eslint src/**/*.ts",
     "lint:fix": "eslint src --fix",
-    "test": "vitest"
+    "test": "vitest",
+    "type": "tsc --noEmit"
   },
   "bin": {
     "treei": "dist/index.js"
@@ -39,6 +40,8 @@
     "vitest": "^1.3.1"
   },
   "dependencies": {
-    "commander": "^12.0.0"
+    "commander": "^12.0.0",
+    "picocolors": "^1.1.1"
   }
 }
+

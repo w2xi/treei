@@ -1,5 +1,6 @@
 import { emoji, characters, NodeTypes } from './config'
 import { Options, TreeNode } from './type'
+import { blue } from 'picocolors'
 
 const lastDirStack: boolean[] = []
 
@@ -25,9 +26,11 @@ export function generate(
     let contentPrefix =
       index === data!.length - 1 ? characters.last : characters.contain
     contentPrefix += characters.line.repeat(2)
+
+    const name = item.type === NodeTypes.DIRECTORY ? blue(item.name) : item.name
     const content = options.icon
-      ? `${emoji[item.type as keyof typeof emoji]}${item.name}`
-      : `${item.name}`
+      ? `${emoji[item.type as keyof typeof emoji]}${name}`
+      : `${name}`
 
     let currentLineStr = `${borderPrefix}${contentPrefix}${content}`
     currentLineStr += '\n'

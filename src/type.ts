@@ -1,3 +1,5 @@
+import { NodeTypes } from './config'
+
 export interface Options {
   directory: string
   ignore?: string | string[]
@@ -9,7 +11,7 @@ export interface Options {
 }
 
 export interface TreeNode {
-  type: string
+  type: (typeof NodeTypes)[keyof typeof NodeTypes]
   name: string
   path?: string
   children?: TreeNode[]
