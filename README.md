@@ -40,7 +40,6 @@ treei
 ├──📄.eslintrc.js
 ├──📄.gitignore
 ├──📄.prettierrc.js
-├──📄.release-it.json
 ├──📄CHANGELOG.md
 ├──📄LICENSE
 ├──📄package-lock.json
@@ -63,7 +62,6 @@ treei
 ├──📄.eslintrc.js
 ├──📄.gitignore
 ├──📄.prettierrc.js
-├──📄.release-it.json
 ├──📄CHANGELOG.md
 ├──📄LICENSE
 ├──📄package-lock.json
@@ -86,7 +84,6 @@ treei
 ├──📄.eslintrc.js
 ├──📄.gitignore
 ├──📄.prettierrc.js
-├──📄.release-it.json
 ├──📄CHANGELOG.md
 ├──📄LICENSE
 ├──📄package-lock.json

@@ -3,5 +3,4 @@ dist
 node_modules
 .vscode
 pnpm-lock.yaml
-.release-it.json
 .eslintrc
