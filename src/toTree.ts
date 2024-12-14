@@ -1,56 +1,15 @@
 import fs from 'fs'
-import { resolve } from 'path'
+import { basename, resolve } from 'path'
 import { isDirectory } from './utils'
 import { NodeTypes } from './config'
 import { sort } from './sort'
 import type { Options, TreeNode } from './type'
 
-// The difference between statSync and lstatSync
-// https://stackoverflow.com/questions/32478698/what-is-the-different-between-stat-fstat-and-lstat-functions-in-node-js
-
-// strategy: dfs or bfs, but bfs by default
 export function toTree(options: Options) {
-  const { strategy, directory } = options
-
-  if (strategy === 'bfs') {
-    return bfs(directory, options)
-  } else {
-    return dfs(directory, options)
-  }
-}
-
-function dfs(path: string, options: Options): TreeNode {
-  const dirName = path.split('/').pop()
-  if (isDirectory(path)) {
-    let dir = fs.readdirSync(path)
-    const ignore = options.ignore || []
-
-    if (ignore.length) {
-      dir = dir.filter((child) => !ignore.includes(child))
-    }
-    if (options.onlyFolder) {
-      dir = dir.filter((child) => isDirectory(resolve(path, child)))
-    }
-    const children = dir.map((child) => dfs(resolve(path, child), options))
-
-    return {
-      type: NodeTypes.DIRECTORY,
-      name: dirName!,
-      children,
-    }
-  } else {
-    return {
-      type: NodeTypes.FILE,
-      name: dirName!,
-    }
-  }
-}
-
-function bfs(path: string, options: Options) {
-  const { ignore, onlyFolder, layer } = options
+  const { directory, ignore, onlyFolder, layer } = options
   const root: TreeNode = {
-    path,
-    name: path,
+    path: directory,
+    name: basename(directory),
     type: NodeTypes.ROOT,
     children: [],
   }

@@ -1,7 +1,6 @@
 import fs from 'fs'
 import { Options } from './type'
 import { fileExistSync } from './utils'
-import { defaultOptions } from './config'
 
 export const onExits: ((output: string) => void)[] = []
 
@@ -29,8 +28,6 @@ export function handleOptions(options: Options) {
       })
     })
   }
-  return {
-    ...defaultOptions,
-    ...options
-  }
+
+  return options
 }

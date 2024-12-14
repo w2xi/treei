@@ -36,5 +36,5 @@ const result = generate(root.children, options)
 
 onExits.forEach((onExit) => onExit(result))
 
-console.log(root.name)
+console.log(root.path)
 console.log(result)

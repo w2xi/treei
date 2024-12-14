@@ -5,11 +5,10 @@ import { NodeTypes } from '../src/config'
 import { getMaxLayer } from '../src/utils'
 
 describe('toTree', () => {
-  const options = {
+  const options: Options = {
     directory: process.cwd(),
     ignore: '.git,node_modules',
-    strategy: 'bfs'
-  } as Options
+  }
   test('root type', () => {
     const result = toTree(options)
     expect(result.type).toBe(NodeTypes.ROOT)

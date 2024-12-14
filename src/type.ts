@@ -5,7 +5,6 @@ export interface Options {
   ignore?: string | string[]
   onlyFolder?: boolean
   layer?: number
-  strategy?: string
   icon?: boolean
   output?: string
 }
