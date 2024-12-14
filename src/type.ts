@@ -16,3 +16,10 @@ export interface TreeNode {
   path?: string
   children?: TreeNode[]
 }
+
+export interface SortCategory {
+  HIDDEN_FILES: string[]
+  HIDDEN_DIRECTORIES: string[]
+  FILES: string[]
+  DIRECTORIES: string[]
+}

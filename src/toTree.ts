@@ -1,7 +1,9 @@
 import fs from 'fs'
+import { resolve } from 'path'
 import { isDirectory } from './utils'
-import { Options, TreeNode } from './type'
 import { NodeTypes } from './config'
+import { sort } from './sort'
+import type { Options, TreeNode } from './type'
 
 // The difference between statSync and lstatSync
 // https://stackoverflow.com/questions/32478698/what-is-the-different-between-stat-fstat-and-lstat-functions-in-node-js
@@ -27,31 +29,31 @@ function dfs(path: string, options: Options): TreeNode {
       dir = dir.filter((child) => !ignore.includes(child))
     }
     if (options.onlyFolder) {
-      dir = dir.filter((child) => isDirectory(`${path}/${child}`))
+      dir = dir.filter((child) => isDirectory(resolve(path, child)))
     }
-    const children = dir.map((child) => dfs(`${path}/${child}`, options))
+    const children = dir.map((child) => dfs(resolve(path, child), options))
 
     return {
       type: NodeTypes.DIRECTORY,
       name: dirName!,
-      children
+      children,
     }
   } else {
     return {
       type: NodeTypes.FILE,
-      name: dirName!
+      name: dirName!,
     }
   }
 }
 
 function bfs(path: string, options: Options) {
   const { ignore, onlyFolder, layer } = options
-  const root = {
+  const root: TreeNode = {
     path,
     name: path,
     type: NodeTypes.ROOT,
-    children: []
-  } as TreeNode
+    children: [],
+  }
   const queue = [root]
 
   let deep = 0
@@ -65,19 +67,24 @@ function bfs(path: string, options: Options) {
     while (size--) {
       const node = queue.shift()
       const { path, children } = node!
-      const dir = fs.readdirSync(path!)
+
+      let dir = fs.readdirSync(path!)
+      dir = sort(dir, path!)
 
       for (let i = 0; i < dir.length; i++) {
         const item = dir[i]
+
         if (ignore && ignore.includes(item)) continue
-        const childPath = `${path}/${item}`
+
+        const childPath = resolve(path!, item)
         const isDir = isDirectory(childPath)
+
         if (onlyFolder && !isDir) continue
 
         const childItem = {
           path: childPath,
           name: item,
-          type: isDir ? NodeTypes.DIRECTORY : NodeTypes.FILE
+          type: isDir ? NodeTypes.DIRECTORY : NodeTypes.FILE,
         } as TreeNode
         if (isDir) {
           queue.push(childItem)
