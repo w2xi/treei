@@ -35,67 +35,116 @@ Ignore `.git` and `node_modules` directory.
 
 ```bash
 $ treei -i '.git|node_modules' # or treei -i '.git,node_modules'
-treei
-├──📄.editorconfig
-├──📄.eslintrc.js
-├──📄.gitignore
-├──📄.prettierrc.js
-├──📄CHANGELOG.md
-├──📄LICENSE
-├──📄package-lock.json
-├──📄package.json
-├──📄README.md
-└──📁src
-    ├──📄config.js
-    ├──📄generate.js
-    ├──📄index.js
-    ├──📄toTree.js
-    └──📄utils.js
+├──.github
+|   └──workflows
+|   |   ├──release.yml
+|   |   └──test.yml
+├──.vscode
+|   └──settings.json
+├──dist
+|   └──index.js
+├──src
+|   ├──config.ts
+|   ├──generate.ts
+|   ├──handleOptions.ts
+|   ├──index.ts
+|   ├──sort.ts
+|   ├──toTree.ts
+|   ├──type.ts
+|   └──utils.ts
+├──test
+|   ├──handleOptions.spec.ts
+|   ├──sort.spec.ts
+|   └──toTree.spec.ts
+├──.editorconfig
+├──.eslintrc
+├──.gitignore
+├──.prettierignore
+├──.prettierrc.mjs
+├──CHANGELOG.md
+├──LICENSE
+├──package.json
+├──pnpm-lock.yaml
+├──README.md
+└──tsconfig.json
 ```
 
 Show emoji icon, prefixing filename or directory.
 
 ```bash
 $ treei -i '.git,node_modules' --icon
-treei
+├──📁.github
+|   └──📁workflows
+|   |   ├──📄release.yml
+|   |   └──📄test.yml
+├──📁.vscode
+|   └──📄settings.json
+├──📁dist
+|   └──📄index.js
+├──📁src
+|   ├──📄config.ts
+|   ├──📄generate.ts
+|   ├──📄handleOptions.ts
+|   ├──📄index.ts
+|   ├──📄sort.ts
+|   ├──📄toTree.ts
+|   ├──📄type.ts
+|   └──📄utils.ts
+├──📁test
+|   ├──📄handleOptions.spec.ts
+|   ├──📄sort.spec.ts
+|   └──📄toTree.spec.ts
 ├──📄.editorconfig
-├──📄.eslintrc.js
+├──📄.eslintrc
 ├──📄.gitignore
-├──📄.prettierrc.js
+├──📄.prettierignore
+├──📄.prettierrc.mjs
 ├──📄CHANGELOG.md
 ├──📄LICENSE
-├──📄package-lock.json
 ├──📄package.json
+├──📄pnpm-lock.yaml
 ├──📄README.md
-└──📁src
-    ├──📄config.js
-    ├──📄generate.js
-    ├──📄index.js
-    ├──📄toTree.js
-    └──📄utils.js
+└──📄tsconfig.json
 ```
 
 Export output into `result.md`, and append mode by default.
 
 ```bash
-$ treei -i '.git,node_modules' -o result.md
-treei
+$ treei -i '.git,node_modules' --icon -o result.md
+├──📁.github
+|   └──📁workflows
+|   |   ├──📄release.yml
+|   |   └──📄test.yml
+├──📁.vscode
+|   └──📄settings.json
+├──📁dist
+|   └──📄index.js
+├──📁src
+|   ├──📄config.ts
+|   ├──📄generate.ts
+|   ├──📄handleOptions.ts
+|   ├──📄index.ts
+|   ├──📄sort.ts
+|   ├──📄toTree.ts
+|   ├──📄type.ts
+|   └──📄utils.ts
+├──📁test
+|   ├──📄handleOptions.spec.ts
+|   ├──📄sort.spec.ts
+|   └──📄toTree.spec.ts
 ├──📄.editorconfig
-├──📄.eslintrc.js
+├──📄.eslintrc
 ├──📄.gitignore
-├──📄.prettierrc.js
+├──📄.prettierignore
+├──📄.prettierrc.mjs
 ├──📄CHANGELOG.md
 ├──📄LICENSE
-├──📄package-lock.json
 ├──📄package.json
+├──📄pnpm-lock.yaml
 ├──📄README.md
-└──📁src
-    ├──📄config.js
-    ├──📄generate.js
-    ├──📄index.js
-    ├──📄toTree.js
-    └──📄utils.js
+└──📄tsconfig.json
 ```
+
 ## License
 
 [MIT](./LICENSE)
