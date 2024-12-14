@@ -1,8 +1,8 @@
 import { describe, test, expect } from 'vitest'
 import { toTree } from '../src/toTree'
-import { Options } from '../src/type'
 import { NodeTypes } from '../src/config'
 import { getMaxLayer } from '../src/utils'
+import type { Options } from '../src/type'
 
 describe('toTree', () => {
   const options: Options = {

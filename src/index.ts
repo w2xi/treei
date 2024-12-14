@@ -5,7 +5,7 @@ import { toTree } from './toTree'
 import { generate } from './generate'
 import pkg from '../package.json'
 import { handleOptions, onExits } from './handleOptions'
-import { Options } from './type'
+import type { Options } from './type'
 
 program
   .name('treei')

@@ -1,6 +1,6 @@
 import fs from 'fs'
-import { Options } from './type'
 import { fileExistSync } from './utils'
+import type { Options } from './type'
 
 export const onExits: ((output: string) => void)[] = []
 

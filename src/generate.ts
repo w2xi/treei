@@ -1,6 +1,6 @@
 import { emoji, characters, NodeTypes } from './config'
-import { Options, TreeNode } from './type'
 import { blue } from 'picocolors'
+import type { Options, TreeNode } from './type'
 
 const lastDirStack: boolean[] = []
 

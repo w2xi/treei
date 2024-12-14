@@ -1,5 +1,5 @@
 import fs from 'fs'
-import { TreeNode } from './type'
+import type { TreeNode } from './type'
 
 // check if a file or directory exists.
 export function fileExistSync(path: string) {
