@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { program } from 'commander'
+import clipboard from 'clipboardy'
 import { toTree } from './toTree'
 import { generate } from './generate'
 import pkg from '../package.json'
@@ -27,6 +28,7 @@ program
     '-o, --output <output>',
     'export content into a file, appending mode by default'
   )
+  .option('-c, --clipboard', 'copy the output to clipboard')
   .parse(process.argv)
 
 const options = handleOptions(program.opts() as Options)
@@ -34,7 +36,13 @@ const options = handleOptions(program.opts() as Options)
 const root = toTree(options)
 const result = generate(root.children, options)
 
-onExits.forEach((onExit) => onExit(result))
+onExits.forEach((fn) => fn(result))
 
-console.log(root.path)
-console.log(result)
+if (options.clipboard) {
+  clipboard.writeSync(result)
+}
+
+if (!options.output && !options.clipboard) {
+  console.log(root.path)
+  console.log(result)
+}

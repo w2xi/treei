@@ -7,6 +7,7 @@ export interface Options {
   layer?: number
   icon?: boolean
   output?: string
+  clipboard?: boolean
 }
 
 export interface TreeNode {

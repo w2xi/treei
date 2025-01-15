@@ -21,7 +21,7 @@ export function handleOptions(options: Options) {
       let outputString = result
       if (fileExistSync(options.output!)) {
         // appending mode
-        outputString = '\n' + result
+        outputString = '\n```\n' + result + '```'
       }
       fs.appendFile(options.output!, outputString, (err) => {
         if (err) throw err
