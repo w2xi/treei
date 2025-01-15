@@ -3,12 +3,12 @@ import { handleOptions } from '../src/handleOptions'
 
 describe('handleOptions', () => {
   const defaultOptions = {
-    directory: process.cwd()
+    directory: process.cwd(),
   }
   test('ignore', () => {
     const options = handleOptions({
       ...defaultOptions,
-      ignore: '.git,node_modules'
+      ignore: '.git,node_modules',
     })
     expect(options.ignore).toEqual(['.git', 'node_modules'])
   })
@@ -16,7 +16,7 @@ describe('handleOptions', () => {
   test('layer', () => {
     const options = handleOptions({
       ...defaultOptions,
-      layer: 1
+      layer: 1,
     })
     expect(options.layer).toBe(1)
   })
@@ -29,7 +29,7 @@ describe('handleOptions', () => {
   test('onlyFolder', () => {
     const options = handleOptions({
       ...defaultOptions,
-      onlyFolder: true
+      onlyFolder: true,
     })
     expect(options.onlyFolder).toBe(true)
   })
@@ -42,8 +42,16 @@ describe('handleOptions', () => {
   test('output', () => {
     const options = handleOptions({
       ...defaultOptions,
-      output: 'test.md'
+      output: 'test.md',
     })
     expect(options.output).toBe('test.md')
+  })
+
+  test('clipboard', () => {
+    const options = handleOptions({
+      ...defaultOptions,
+      clipboard: true,
+    })
+    expect(options.clipboard).toBe(true)
   })
 })
