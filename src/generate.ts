@@ -23,7 +23,10 @@ export function generate(data: TreeNode[], options: Options, deep = 0) {
       index === data!.length - 1 ? characters.last : characters.contain
     contentPrefix += characters.line.repeat(2)
 
-    const name = item.type === NodeTypes.DIRECTORY ? blue(item.name) : item.name
+    const name =
+      item.type === NodeTypes.DIRECTORY && !options.clipboard
+        ? blue(item.name)
+        : item.name
     const content = options.icon
       ? `${emoji[item.type as keyof typeof emoji]}${name}`
       : `${name}`
@@ -34,6 +37,7 @@ export function generate(data: TreeNode[], options: Options, deep = 0) {
 
     const isLastItemDirectory =
       index === data!.length - 1 && item.type === NodeTypes.DIRECTORY
+
     lastDirStack[deep] = isLastItemDirectory
 
     if (item.children && item.children.length > 0) {
