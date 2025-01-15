@@ -34,7 +34,7 @@ program
 const options = handleOptions(program.opts() as Options)
 
 const root = toTree(options)
-const result = generate(root.children, options)
+const result = generate(root.children!, options)
 
 onExits.forEach((fn) => fn(result))
 
