@@ -20,12 +20,13 @@ Generate a directory structure tree
 
 Options:
   -V, --version          output the version number
-  -i, --ignore <ig>      ignore specific directory name, separated by comma or '|'  
+  -i, --ignore <ig>      ignore specific directory name, separated by comma or '|'
   -l, --layer <layer>    specify the layer of output
   -d, --directory <dir>  specify the directory to generate structure tree
   -f, --only-folder      output folder only
   --icon                 output emoji icon, prefixing filename or directory
-  -o, --output <output>  export content into a file, appending mode by default      
+  -o, --output <output>  export content into a file, appending mode by default
+  -c, --clipboard        copy the output to clipboard
   -h, --help             display help for command
 ```
 
