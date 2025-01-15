@@ -4,14 +4,10 @@ import type { Options, TreeNode } from './type'
 
 const lastDirStack: boolean[] = []
 
-export function generate(
-  data: TreeNode['children'],
-  options: Options,
-  deep = 0
-) {
+export function generate(data: TreeNode[], options: Options, deep = 0) {
   let output = ''
 
-  data!.forEach((item, index) => {
+  data.forEach((item, index) => {
     let isParentAllLeaf = false
     if (lastDirStack.length === 1) {
       isParentAllLeaf = lastDirStack[0]
