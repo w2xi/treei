@@ -146,6 +146,12 @@ $ treei -i '.git,node_modules' --icon -o result.md
 └──📄tsconfig.json
 ```
 
+Copy the output to clipboard.
+
+```bash
+$ treei -i '.git,node_modules' --icon -c
+```
+
 ## License
 
 [MIT](./LICENSE)
