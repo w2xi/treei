@@ -5,25 +5,25 @@
 [![npm](https://img.shields.io/npm/v/treei)](https://www.npmjs.com/package/treei)
 [![npm downloads](https://img.shields.io/npm/dm/treei.svg?style=flat-square)](https://www.npmjs.com/package/treei)
 
-A node command line tool to generate directory structure tree.
+一个用于生成目录结构树的 Node.js 命令行工具。
 
-English | [简体中文](./README-zh_CN.md)
+[English](./README.md) | 简体中文
 
 </div>
 
-## ✨ Features
+## ✨ 特性
 
-- Output a friendly directory tree structure like VSCode
-- Use different colors to distinguish folders and files
-- More...
+- 输出类似 VSCode 的友好目录树结构
+- 使用不同颜色区分文件夹和文件
+- 更多...
 
-## 📦 Installation
+## 📦 安装
 
 ```bash
 npm i treei -g
 ```
 
-## 🚀 Usage
+## 🚀 使用方法
 
 ```bash
 $ treei -h
@@ -43,12 +43,12 @@ Options:
   -h, --help             display help for command
 ```
 
-## 📝 Examples
+## 📝 示例
 
-Ignore `.git` and `node_modules` directory.
+忽略 `.git` 和 `node_modules` 目录。
 
 ```bash
-$ treei -i '.git|node_modules' # or treei -i '.git,node_modules'
+$ treei -i '.git|node_modules' # 或 treei -i '.git,node_modules'
 ├──.github
 |   └──workflows
 |   |   ├──release.yml
@@ -83,7 +83,7 @@ $ treei -i '.git|node_modules' # or treei -i '.git,node_modules'
 └──tsconfig.json
 ```
 
-Show emoji icon, prefixing filename or directory.
+显示文件名或目录前的表情图标。
 
 ```bash
 $ treei -i '.git,node_modules' --icon
@@ -121,7 +121,7 @@ $ treei -i '.git,node_modules' --icon
 └──📄tsconfig.json
 ```
 
-Export output into `result.md`, and append mode by default.
+将输出导出到 `result.md`，默认使用追加模式。
 
 ```bash
 $ treei -i '.git,node_modules' --icon -o result.md
@@ -159,12 +159,12 @@ $ treei -i '.git,node_modules' --icon -o result.md
 └──📄tsconfig.json
 ```
 
-Copy the output to clipboard.
+将输出复制到剪贴板。
 
 ```bash
 $ treei -i '.git,node_modules' --icon -c
 ```
 
-## 📄 License
+## 📄 许可证
 
-[MIT](./LICENSE)
+[MIT](./LICENSE) 
